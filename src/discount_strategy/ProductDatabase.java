@@ -4,7 +4,7 @@ package discount_strategy;
  *
  * @author Tracy Kobel
  */
-public class ProductData {
+public class ProductDatabase {
     Product[] productDatabase = {
         new Product("STW-543", "Nike Shorts", 29.99, new SeasonalDiscount()),
         new Product("AVN-803", "Blue Bath Towel", 8.49, new QtyDiscount()),
@@ -17,4 +17,9 @@ public class ProductData {
         new Product("ERK-035", "Cloud Pillow", 10, new BOGODiscount()),
         new Product("VXC-320", "Keurig Variety Flavors", 8, new SeasonalDiscount())
     };
+
+    public Product[] getProductDatabase() {
+        return productDatabase;
+    }
+
 }

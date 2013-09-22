@@ -6,16 +6,32 @@ package discount_strategy;
  */
 public class Product {
     
-    private String productId;
+    private String id;
     private String description;
     private double unitPrice;
     private Discount productDiscount;
     
-    public Product(String productId, String description, double unitPrice, Discount productDiscount) {
-        this.productId = productId;
+    public Product(String id, String description, double unitPrice, Discount productDiscount) {
+        this.id = id;
         this.description = description;
         this.unitPrice = unitPrice;
         this.productDiscount = productDiscount;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public Discount getProductDiscount() {
+        return productDiscount;
     }
 
     

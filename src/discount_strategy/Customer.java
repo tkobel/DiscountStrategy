@@ -5,11 +5,19 @@ package discount_strategy;
  * @author Tracy Kobel
  */
 public class Customer {
-    private String customerId;
-    private String customerName;
+    private String id;
+    private String name;
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
     
     public Customer(String id, String name) {
-        customerId = id;
-        customerName = name;
+        this.id = id;
+        this.name = name;
     }
 }

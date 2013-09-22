@@ -7,12 +7,21 @@ package discount_strategy;
 public class QtyDiscount implements Discount {
     
     private int qtyRequired;
-    private double discountedAmount;
+    private double discountedPriceForLot;
 //    private String discountMessage;
     
-    public QtyDiscount(int qtyRequired, double discountAmount) {
+    public QtyDiscount(int qtyRequired, double discountedPriceForLot) {
         this.qtyRequired = qtyRequired;
-        this.discountedAmount = discountAmount;
+        this.discountedPriceForLot = discountedPriceForLot;
 //        discountMessage = Integer.toString(qtyRequired) + " for " + Double.toString(discountAmount);
+    }
+    
+    @Override
+    public double getDiscountAmount(LineItem ln) {
+        Product item = ln.getProduct();
+        double regPriceForLot = ln.getQty() * item.getUnitPrice();
+        double differenceOfRegLotAndDiscountedLot = regPriceForLot - discountedPriceForLot;
+        
+        return (ln.getQty()/qtyRequired) * differenceOfRegLotAndDiscountedLot;
     }
 }

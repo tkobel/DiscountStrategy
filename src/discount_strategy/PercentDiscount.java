@@ -16,5 +16,8 @@ public class PercentDiscount implements Discount {
         this.discountPercentage = discountPercentage;
     }
     
-    
+    @Override
+    public double getDiscountAmount(LineItem ln) {
+        return ln.getProduct().getUnitPrice() * discountPercentage * ln.getQty();
+    }
 }

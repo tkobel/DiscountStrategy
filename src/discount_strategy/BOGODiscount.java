@@ -6,4 +6,5 @@ package discount_strategy;
  */
 public class BOGODiscount implements Discount {
     
+    public BOGODiscount() {};
 }

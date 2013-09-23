@@ -1,4 +1,7 @@
 package discount_strategy;
+
+import java.util.Scanner;
+
 /**
  *
  * @author Tracy
@@ -12,6 +15,7 @@ public class Transaction {
     private double totalTax;
     private double total;
     private static final double TAX_RATE = .065;
+    Scanner keyboard = new Scanner(System.in);
 
     public LineItem[] getLineItems() {
         return lineItems;
@@ -49,6 +53,9 @@ public class Transaction {
         lineItems = temp;
         lineItems[lineItems.length-1] = new LineItem(qty, item);
     }    
+    public void acceptPayment() {
+        System.out.println("Enter payment amount: ");
+    }
     public void calculateTotals() {       
         calculateSubtotal();
         calculateDiscount();

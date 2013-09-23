@@ -14,6 +14,7 @@ public class PrinterReceiptOutput implements ReceiptOutput {
     
     @Override
     public void generateReceipt(Transaction trans) {
+        System.out.println("\nKohl's Receipt");
         printCustomer(trans.getCustomer());
         printLineItems(trans.getLineItems());
         printTotals(trans);
@@ -24,20 +25,21 @@ public class PrinterReceiptOutput implements ReceiptOutput {
     }
     private void printLineItems(LineItem[] lineItems) {
         for(LineItem line : lineItems) {
-            System.out.println(line.getQty() + " " + line.getProduct().getDescription()
-                                + " @ " + money.format(line.getProduct().getUnitPrice())
-                                + "\t" + money.format(line.getQty()*line.getProduct().getUnitPrice()));
+            System.out.printf("%3s %20s %-10s %-10s\n", line.getQty(), line.getProduct().getDescription() + " @",
+                                 money.format(line.getProduct().getUnitPrice()),
+                                money.format(line.getQty()*line.getProduct().getUnitPrice()));
             if(line.getProduct().getProductDiscount().getDiscountAmount(line) > 0) {
-                System.out.println("\t" + line.getProduct().getProductDiscount().getDiscountDescription()
-                                    + "\t" + money.format(line.getProduct().getProductDiscount().getDiscountAmount(line)));
+                System.out.printf("\t%-15s %15s\n", line.getProduct().getProductDiscount().getDiscountDescription(),
+                                     money.format(-line.getProduct().getProductDiscount().getDiscountAmount(line)));
             }
         }
     }
     private void printTotals(Transaction trans) {
-        System.out.println("Subtotal\t" + money.format(trans.getSubtotal()));
-        System.out.println("You saved \t" + money.format(trans.getDiscountTotal()) + "!");
-        System.out.println("Tax\t\t" + money.format(trans.getTotalTax()));
-        System.out.println("Total\t\t" + money.format(trans.getTotal()));
+        System.out.println();
+        System.out.printf("Subtotal%18s\n", money.format(trans.getSubtotal()));
+        System.out.printf("Discount%18s\n", money.format(trans.getDiscountTotal()));
+        System.out.printf("Tax%18s\n", money.format(trans.getTotalTax()));
+        System.out.printf("Total%18s\n", money.format(trans.getTotal()));
     }
   
 }

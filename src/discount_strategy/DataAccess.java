@@ -15,6 +15,7 @@ public class DataAccess {
             }
         }
         return null;
+        
     };
     
     public Product getProductById(String id) {
@@ -24,5 +25,5 @@ public class DataAccess {
             }
         }
         return null;
-    }
+    };
 }

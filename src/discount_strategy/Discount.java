@@ -6,4 +6,5 @@ package discount_strategy;
  */
 public interface Discount {
     public abstract double getDiscountAmount(LineItem line);
+    public abstract String getDiscountDescription();
 }

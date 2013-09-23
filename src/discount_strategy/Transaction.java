@@ -4,55 +4,68 @@ package discount_strategy;
  * @author Tracy
  */
 public class Transaction {
-    private LineItem[] line;
     private Customer customer;
+    private LineItem[] lineItems = {};
     private double subtotal;
     private double discountTotal;
+    private double subtotalLessDiscount;
+    private double totalTax;
     private double total;
+    private static final double TAX_RATE = .065;
 
+    public LineItem[] getLineItems() {
+        return lineItems;
+    }
+    public Customer getCustomer() {
+        return customer;
+    }
+    public double getSubtotal() {
+        return subtotal;
+    }
+    public double getDiscountTotal() {
+        return discountTotal;
+    }
+    public double getSubtotalLessDiscount() {
+        return subtotalLessDiscount;
+    }
+    public double getTotalTax() {
+        return totalTax;
+    }
     public double getTotal() {
         return total;
     }
-    private static final double TAX_RATE = .065;
+    
+    public static double getTAX_RATE() {
+        return TAX_RATE;
+    }    
     
     public Transaction(Customer customer) {
     this.customer = customer;
     };
     
     public void addLineItem(int qty, Product item) {
-        LineItem[] temp = new LineItem[line.length+1];
-        System.arraycopy(line, 0, temp, 0, line.length);
-        line[line.length-1] = new LineItem(qty, item);
-    }
-    
-//    private void printCustomer() {
-//        System.out.println("Welcome " + customer.getName());
-//        System.out.println("Your customer number is: " + customer.getId());
-//    }
-//    private void printLineItems() {
-//        for(LineItem l : line) {
-//            System.out.println(l.getQty() + " " + l.getProduct().getDescription()
-//                                + "\t\t" + Double.toString(l.getProduct().getUnitPrice()));
-//            //print discount line
-//        }
-//    }
+        LineItem[] temp = new LineItem[lineItems.length + 1];
+        System.arraycopy(lineItems, 0, temp, 0, lineItems.length);
+        lineItems = temp;
+        lineItems[lineItems.length-1] = new LineItem(qty, item);
+    }    
     public void calculateTotals() {       
         calculateSubtotal();
         calculateDiscount();
-        total = 0;
-        total = subtotal - discountTotal;
-        total += total*TAX_RATE;
+        subtotalLessDiscount = subtotal - discountTotal;
+        totalTax = subtotalLessDiscount * TAX_RATE;
+        total = subtotalLessDiscount + totalTax;;
     }
     
     private void calculateSubtotal() {
         subtotal = 0;
-        for(LineItem ln:line) {
+        for(LineItem ln:lineItems) {
             subtotal += ln.getQty()* ln.getProduct().getUnitPrice();
         }
     }
     private void calculateDiscount() {
         discountTotal = 0;
-        for(LineItem ln : line) {
+        for(LineItem ln : lineItems) {
             discountTotal += ln.getProduct().getProductDiscount().getDiscountAmount(ln);
         }
     }

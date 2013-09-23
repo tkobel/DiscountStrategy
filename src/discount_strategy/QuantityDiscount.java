@@ -1,19 +1,23 @@
 package discount_strategy;
 
+import java.text.NumberFormat;
+
 /**
  *
  * @author Tracy Kobel
  */
-public class QtyDiscount implements Discount {
+public class QuantityDiscount implements Discount {
     
     private int qtyRequired;
     private double discountedPriceForLot;
-//    private String discountMessage;
+    private String discountDescription;
+    NumberFormat money = NumberFormat.getCurrencyInstance();
     
-    public QtyDiscount(int qtyRequired, double discountedPriceForLot) {
+    public QuantityDiscount(int qtyRequired, double discountedPriceForLot) {
         this.qtyRequired = qtyRequired;
         this.discountedPriceForLot = discountedPriceForLot;
-//        discountMessage = Integer.toString(qtyRequired) + " for " + Double.toString(discountAmount);
+        discountDescription = Integer.toString(qtyRequired) + " for "
+                                         + money.format(discountedPriceForLot);
     }
     
     @Override
@@ -23,5 +27,9 @@ public class QtyDiscount implements Discount {
         double differenceOfRegLotAndDiscountedLot = regPriceForLot - discountedPriceForLot;
         
         return (ln.getQty()/qtyRequired) * differenceOfRegLotAndDiscountedLot;
+    }
+    @Override
+    public String getDiscountDescription() {
+        return discountDescription;
     }
 }

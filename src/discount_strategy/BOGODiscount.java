@@ -6,11 +6,14 @@ package discount_strategy;
  */
 public class BOGODiscount implements Discount {
     private static final int FREE_ONE = 2;
-    
-    public BOGODiscount() {};
+    private String discountDescription = "Buy " + (FREE_ONE-1) + " get 1 free";           
     
     @Override
     public double getDiscountAmount(LineItem ln) {
         return (ln.getQty()/FREE_ONE) * ln.getProduct().getUnitPrice();
     }
+    @Override
+    public String getDiscountDescription() {
+        return discountDescription;
+    }    
 }

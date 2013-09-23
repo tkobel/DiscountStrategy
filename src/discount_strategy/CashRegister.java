@@ -2,7 +2,7 @@ package discount_strategy;
 
 /**
  *
- * @author Tracy
+ * @author Tracy Kobel
  */
 public class CashRegister {
     Transaction currentTransaction;
@@ -19,7 +19,8 @@ public class CashRegister {
     
     public void FinalizeTransaction(double amountTendered) {
         receivePayment(amountTendered);
-        //print receipt
+        ReceiptOutput receiptPrinter = new PrinterReceiptOutput();
+        receiptPrinter.generateReceipt(currentTransaction);
     };
     public void calculateTotal() {
         currentTransaction.calculateTotals();

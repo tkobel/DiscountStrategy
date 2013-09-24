@@ -14,7 +14,7 @@ public class Transaction {
     private double subtotalLessDiscount;
     private double totalTax;
     private double total;
-    private static final double TAX_RATE = .065;
+    private static double taxRate = .065;
     Scanner keyboard = new Scanner(System.in);
 
     public LineItem[] getLineItems() {
@@ -39,8 +39,8 @@ public class Transaction {
         return total;
     }
     
-    public static double getTAX_RATE() {
-        return TAX_RATE;
+    public static double getTaxRate() {
+        return taxRate;
     }    
     
     public Transaction(Customer customer) {
@@ -53,15 +53,13 @@ public class Transaction {
         lineItems = temp;
         lineItems[lineItems.length-1] = new LineItem(qty, item);
     }    
-    public void acceptPayment() {
-        System.out.println("Enter payment amount: ");
-    }
+
     public void calculateTotals() {       
         calculateSubtotal();
         calculateDiscount();
         subtotalLessDiscount = subtotal - discountTotal;
-        totalTax = subtotalLessDiscount * TAX_RATE;
-        total = subtotalLessDiscount + totalTax;;
+        totalTax = subtotalLessDiscount * taxRate;
+        total = subtotalLessDiscount + totalTax;
     }
     
     private void calculateSubtotal() {
@@ -73,7 +71,7 @@ public class Transaction {
     private void calculateDiscount() {
         discountTotal = 0;
         for(LineItem ln : lineItems) {
-            discountTotal += ln.getProduct().getProductDiscount().getDiscountAmount(ln);
+            discountTotal += ln.getProduct().getProductDiscount().getDiscountAmount(ln.getQty(), ln.getProduct().getUnitPrice());
         }
     }
 }

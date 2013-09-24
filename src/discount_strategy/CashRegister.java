@@ -5,8 +5,12 @@ package discount_strategy;
  * @author Tracy Kobel
  */
 public class CashRegister {
-    Transaction currentTransaction;
-    DataAccess database = new DataAccess();
+    private Transaction currentTransaction;
+    private DataAccess database;
+    
+    public CashRegister (DataAccess database) {
+        this.database = database;
+    }
     
     //Looks up customer by id and stores Customer object in the reciept
     public void startTransaction(String customerId) {
@@ -17,19 +21,11 @@ public class CashRegister {
         currentTransaction.addLineItem(qty, database.getProductById(productId));
     }
     
-    public void FinalizeTransaction(double amountTendered) {
-        receivePayment(amountTendered);
-        ReceiptOutput receiptPrinter = new PrinterReceiptOutput();
+    public void generateReceipt() {
+        ReceiptOutput receiptPrinter = new ConsoleReceiptOutput();
         receiptPrinter.generateReceipt(currentTransaction);
     };
     public void calculateTotal() {
         currentTransaction.calculateTotals();
-        System.out.println("The total for this transaction is " + Double.toString(currentTransaction.getTotal()));
-    };
-    private void receivePayment(double amountTendered) {
-        if(amountTendered < currentTransaction.getTotal()) {
-            throw new IllegalArgumentException();
-        }
-    }
-    
+    };    
 }

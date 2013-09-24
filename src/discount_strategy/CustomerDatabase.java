@@ -17,5 +17,4 @@ public class CustomerDatabase {
     public Customer[] getCustomerDatabase() {
         return customerDatabase;
     }
-
 }

@@ -9,8 +9,8 @@ public class BOGODiscount implements Discount {
     private String discountDescription = "Buy " + (FREE_ONE-1) + " get 1 free";           
     
     @Override
-    public double getDiscountAmount(LineItem ln) {
-        return (ln.getQty()/FREE_ONE) * ln.getProduct().getUnitPrice();
+    public double getDiscountAmount(int qty, double price) {
+        return (qty/FREE_ONE) * price;
     }
     @Override
     public String getDiscountDescription() {

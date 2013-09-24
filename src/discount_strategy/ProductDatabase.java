@@ -21,5 +21,4 @@ public class ProductDatabase {
     public Product[] getProductDatabase() {
         return productDatabase;
     }
-
 }

@@ -1,29 +1,17 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package discount_strategy;
 
 /**
  *
- * @author Tracy
+ * @author Tracy Kobel
  */
-public class DataAccess {
-    CustomerDatabase customerData = new CustomerDatabase();
-    ProductDatabase productData = new ProductDatabase();
+public interface DataAccess {
+
+    Customer getCustomerById(String id);
+
+    Product getProductById(String id);
     
-    public Customer getCustomerById(String id) {
-        for(Customer c : customerData.getCustomerDatabase()) {
-            if(c.getId().equalsIgnoreCase(id)) {
-                return c;
-            }
-        }
-        return null;
-        
-    };
-    
-    public Product getProductById(String id) {
-        for(Product p : productData.getProductDatabase()) {
-            if(p.getId().equalsIgnoreCase(id)) {
-                return p;
-            }
-        }
-        return null;
-    };
 }

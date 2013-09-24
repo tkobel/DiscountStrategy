@@ -32,7 +32,5 @@ public class Product {
 
     public Discount getProductDiscount() {
         return productDiscount;
-    }
-
-    
+    } 
 }

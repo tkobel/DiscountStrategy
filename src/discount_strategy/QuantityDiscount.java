@@ -11,7 +11,7 @@ public class QuantityDiscount implements Discount {
     private int qtyRequired;
     private double discountedPriceForLot;
     private String discountDescription;
-    NumberFormat money = NumberFormat.getCurrencyInstance();
+    private NumberFormat money = NumberFormat.getCurrencyInstance();
     
     public QuantityDiscount(int qtyRequired, double discountedPriceForLot) {
         this.qtyRequired = qtyRequired;
@@ -21,12 +21,11 @@ public class QuantityDiscount implements Discount {
     }
     
     @Override
-    public double getDiscountAmount(LineItem ln) {
-        Product item = ln.getProduct();
-        double regPriceForLot = ln.getQty() * item.getUnitPrice();
+    public double getDiscountAmount(int qty, double price) {
+        double regPriceForLot = qty * price;
         double differenceOfRegLotAndDiscountedLot = regPriceForLot - discountedPriceForLot;
         
-        return (ln.getQty()/qtyRequired) * differenceOfRegLotAndDiscountedLot;
+        return (qty/qtyRequired) * differenceOfRegLotAndDiscountedLot;
     }
     @Override
     public String getDiscountDescription() {

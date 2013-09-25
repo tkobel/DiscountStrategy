@@ -9,9 +9,9 @@ public class Product {
     private String id;
     private String description;
     private double unitPrice;
-    private Discount productDiscount;
+    private IDiscount productDiscount;
     
-    public Product(String id, String description, double unitPrice, Discount productDiscount) {
+    public Product(String id, String description, double unitPrice, IDiscount productDiscount) {
         this.id = id;
         this.description = description;
         this.unitPrice = unitPrice;
@@ -30,7 +30,7 @@ public class Product {
         return unitPrice;
     }
 
-    public Discount getProductDiscount() {
+    public IDiscount getProductDiscount() {
         return productDiscount;
     } 
 }

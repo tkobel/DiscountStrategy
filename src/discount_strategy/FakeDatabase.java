@@ -4,8 +4,17 @@ package discount_strategy;
  *
  * @author Tracy Kobel
  */
-public class ProductDatabase {
-    private Product[] productDatabase = {
+public class FakeDatabase {
+        private Customer[] customerTable = {
+        new Customer("110", "Tracy"), 
+        new Customer("111", "Sue"),
+        new Customer("185", "Jake"),
+        new Customer("853", "Ellie"),
+        new Customer("940", "Thomas"),
+        new Customer("554", "Michelle")
+    };
+
+        private Product[] productTable = {
         new Product("STW-543", "Nike Shorts", 29.99, new PercentDiscount(.15)),
         new Product("AVN-803", "Blue Bath Towel", 8.49, new QuantityDiscount(3,20)),
         new Product("KLA-024", "Chaps Necktie", 18.99, new BOGODiscount()),
@@ -18,7 +27,11 @@ public class ProductDatabase {
         new Product("VXC-320", "Keurig Variety Flavors", 8, new PercentDiscount(.15))
     };
 
+    public Customer[] getCustomerDatabase() {
+        return customerTable;
+    }
+    
     public Product[] getProductDatabase() {
-        return productDatabase;
+        return productTable;
     }
 }

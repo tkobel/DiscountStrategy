@@ -1,7 +1,5 @@
 package discount_strategy;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Tracy
@@ -15,7 +13,6 @@ public class Transaction {
     private double totalTax;
     private double total;
     private static double taxRate = .065;
-    Scanner keyboard = new Scanner(System.in);
 
     public LineItem[] getLineItems() {
         return lineItems;

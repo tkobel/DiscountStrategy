@@ -6,11 +6,11 @@ import java.text.NumberFormat;
  *
  * @author Tracy Kobel
  */
-public class PercentDiscount implements Discount {
+public class PercentDiscount implements IDiscount {
    
     private double discountPercentage;
     private String discountDescription;
-    NumberFormat percent = NumberFormat.getPercentInstance();
+    private NumberFormat percent = NumberFormat.getPercentInstance();
     public PercentDiscount(double discountPercentage) {
         this.discountPercentage = discountPercentage;
         discountDescription = percent.format(discountPercentage) + " off";

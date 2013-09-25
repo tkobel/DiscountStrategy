@@ -6,7 +6,7 @@ import java.text.NumberFormat;
  *
  * @author Tracy Kobel
  */
-public class QuantityDiscount implements Discount {
+public class QuantityDiscount implements IDiscount {
     
     private int qtyRequired;
     private double discountedPriceForLot;

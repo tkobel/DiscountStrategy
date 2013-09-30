@@ -1,8 +1,9 @@
 package discount.strategy;
 
 /**
- *
+ * This is the Startup program for the Discount Strategy project.
  * @author Tracy Kobel
+ * @version 1.00
  */
 public class Startup {
     public static void main(String[] args) {

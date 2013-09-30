@@ -1,7 +1,8 @@
 package discount.strategy;
 
 /**
- *
+ * This class holds all of the data for a single transaction. The data includes
+ * a Customer object, any line items and all totals, taxes, and discounts.
  * @author Tracy
  */
 public class Transaction {
@@ -13,6 +14,8 @@ public class Transaction {
     private double totalTax;
     private double total;
     private double taxRate = .065;
+    private static final String AMOUNT_ERR = "Amount must be greater than 0";
+    private static final String FIELD_ERR = "Field cannot be null";
 
     /**
      * Gets the array of Line Items
@@ -81,15 +84,23 @@ public class Transaction {
      * Adds a line item to the line item array
      * @param qty quantity to be added
      * @param item product to be added
+     * @throws IllegalArgumentException if qty is less than 0 or item is null
      */
     public void addLineItem(int qty, Product item) {
+        if (qty < 0) {
+            throw new IllegalArgumentException(AMOUNT_ERR);
+        }
+        if (item == null) {
+            throw new IllegalArgumentException(FIELD_ERR);
+        }
         LineItem[] temp = new LineItem[lineItems.length + 1];
         System.arraycopy(lineItems, 0, temp, 0, lineItems.length);
         lineItems = temp;
         lineItems[lineItems.length-1] = new LineItem(qty, item);
     }    
 /**
- * Calculates all transaction totals and stores them within the Transaction object
+ * Calculates all transaction totals and stores them within the Transaction 
+ * object
  */
     public void calculateTotals() {       
         calculateSubtotal();

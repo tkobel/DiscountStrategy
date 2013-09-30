@@ -5,7 +5,6 @@ package discount.strategy;
  * Discount.
  * 
  * @author Tracy Kobel
- * @version 1.00
  */
 public class BOGODiscount implements IDiscount {
     private static final int FREE_ONE = 2;
@@ -14,7 +13,8 @@ public class BOGODiscount implements IDiscount {
             + "integer greater than 0";
     private static final String PRICE_ERR = "Ivalid Price. Must be greater than 0";
     /**
-     * 
+     * Gets the amount to discount off of the extended price for the given
+     * quantity and unit price
      * @param qty quantity of units to be discounted
      * @param price list price per unit
      * @return the amount to discount for a give quantity

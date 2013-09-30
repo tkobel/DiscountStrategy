@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package discount_strategy;
+package discount.strategy;
 
 /**
  *

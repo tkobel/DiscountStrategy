@@ -1,7 +1,7 @@
-package discount_strategy;
+package discount.strategy;
 
 /**
- *
+ * An interface for DataAccess objects.
  * @author Tracy Kobel
  */
 public interface IDataAccess {

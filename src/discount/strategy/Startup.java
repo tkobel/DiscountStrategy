@@ -1,4 +1,4 @@
-package discount_strategy;
+package discount.strategy;
 
 /**
  *

@@ -1,5 +1,8 @@
 package discount.strategy;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  * This class holds all of the data for a single transaction. The data includes
  * a Customer object, any line items and all totals, taxes, and discounts.
@@ -16,6 +19,8 @@ public class Transaction {
     private double taxRate = .065;
     private static final String AMOUNT_ERR = "Amount must be greater than 0";
     private static final String FIELD_ERR = "Field cannot be null";
+    private String dateFormat = "M/d/yyyy hh:mm a";
+    private Calendar timeStamp = Calendar.getInstance();
 
     /**
      * Gets the array of Line Items
@@ -79,7 +84,15 @@ public class Transaction {
      */
     public Transaction(Customer customer) {
     this.customer = customer;
-    };
+    }
+    /**
+     * Gives the transaction time as a string
+     * @return a formatted string of the current transaction date and time
+     */
+    public String dateToString() {
+        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+        return sdf.format(timeStamp.getTime());
+    }
     /**
      * Adds a line item to the line item array
      * @param qty quantity to be added

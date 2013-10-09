@@ -11,7 +11,7 @@ public class Product {
     private String id;
     private String description;
     private double unitPrice;
-    private IDiscount productDiscount;
+    private DiscountStrategy productDiscount;
     private static final String AMOUNT_ERR = "Amount must be greater than 0";
     private static final String FIELD_ERR = "Field cannot be null";
     /**
@@ -25,7 +25,7 @@ public class Product {
      * is null, or if unitPrice is less than 0
      */
     
-    public Product(String id, String description, double unitPrice, IDiscount productDiscount) {
+    public Product(String id, String description, double unitPrice, DiscountStrategy productDiscount) {
         if(id == null) {
             throw new IllegalArgumentException(FIELD_ERR);
         }
@@ -72,7 +72,7 @@ public class Product {
      * Gets the Discount object associated with this product
      * @return the Discount object for this product
      */
-    public IDiscount getProductDiscount() {
+    public DiscountStrategy getProductDiscount() {
         return productDiscount;
     } 
 }

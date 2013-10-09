@@ -6,7 +6,7 @@ package discount.strategy;
  * using a quantity and unit price.
  * @author Tracy Kobel
  */
-public interface IDiscount {
+public interface DiscountStrategy {
     /**
      * Gets the amount to discount off of the extended price for the given
      * quantity and unit price

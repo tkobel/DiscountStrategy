@@ -2,11 +2,11 @@ package discount.strategy;
 import java.text.NumberFormat;
 
 /**
- * An implementation of the IReceiptOutput interface. Outputs a receipt to the
+ * An implementation of the ReceiptOutputStrategy interface. Outputs a receipt to the
  * java console
  * @author Tracy Kobel
  */
-public class ConsoleReceiptOutput implements IReceiptOutput {
+public class ConsoleReceiptOutput implements ReceiptOutputStrategy {
     
     private NumberFormat money = NumberFormat.getCurrencyInstance();
     private static final String TRANSACTION_ERR = "Transaction object is null";
@@ -22,6 +22,7 @@ public class ConsoleReceiptOutput implements IReceiptOutput {
         }
         System.out.println("               Kohl's Receipt");
         printCustomer(trans);
+        System.out.println(trans.dateToString());
         System.out.println();
         printLineItems(trans);
         printTotals(trans);
@@ -45,8 +46,14 @@ public class ConsoleReceiptOutput implements IReceiptOutput {
                                      money.format(line.getProduct().getUnitPrice()),
                                      money.format(line.getQty()*line.getProduct().getUnitPrice()));
             if(line.getProduct().getProductDiscount().getDiscountAmount(line.getQty(), line.getProduct().getUnitPrice()) > 0) {
-                System.out.printf("\t%-28s %10s\n", line.getProduct().getProductDiscount().getDiscountDescription(),
-                                     money.format(-line.getProduct().getProductDiscount().getDiscountAmount(line.getQty(), line.getProduct().getUnitPrice())));
+                System.out.printf("\t%-28s %10s\n", line.getProduct()
+                                                    .getProductDiscount()
+                                                    .getDiscountDescription(),
+                                                    money.format(-line.getProduct()
+                                                    .getProductDiscount()
+                                                    .getDiscountAmount(line.getQty(), 
+                                                    line.getProduct().
+                                                    getUnitPrice())));
             }
         }
     }

@@ -1,12 +1,12 @@
 package discount.strategy;
 
 /**
- * An implementation of the IDiscount interface. Used for a Buy One Get One Free
+ * An implementation of the DiscountStrategy interface. Used for a Buy One Get One Free
  * Discount.
  * 
  * @author Tracy Kobel
  */
-public class BOGODiscount implements IDiscount {
+public class BOGODiscount implements DiscountStrategy {
     private static final int FREE_ONE = 2;
     private String discountDescription = "Buy " + (FREE_ONE-1) + " get 1 free";
     private static final String QTY_ERR = "Invalid Quantity. Must be an "

@@ -5,7 +5,7 @@ package discount.strategy;
  * be generated for various formats of output.
  * @author Tracy Kobel
  */
-public interface IReceiptOutput {
+public interface ReceiptOutputStrategy {
     /**
      * Generates a record of a transaction to a form of output.
      * @param trans the transaction object to be recorded

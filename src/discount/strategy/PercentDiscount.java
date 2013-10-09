@@ -3,11 +3,11 @@ package discount.strategy;
 import java.text.NumberFormat;
 
 /**
- * An implementation of the IDiscount interface. Used for getting the amount of 
+ * An implementation of the DiscountStrategy interface. Used for getting the amount of 
  * the percentage taken off of an original price
  * @author Tracy Kobel
  */
-public class PercentDiscount implements IDiscount {
+public class PercentDiscount implements DiscountStrategy {
    
     private double discountPercentage;
     private String discountDescription;

@@ -1,11 +1,11 @@
 package discount.strategy;
 
 /**
- * An implementation of the IDataAccess interface. Used to simulate accessing a
+ * An implementation of the DataAccessStrategy interface. Used to simulate accessing a
  * database by getting data from another java class.
  * @author Tracy
  */
-public class FakeDataAccess implements IDataAccess {
+public class FakeDataAccess implements DataAccessStrategy {
     private FakeDatabase fakeData = new FakeDatabase();
     private final String NAME_ERR = "Name cannot be null";
     private final String PRODUCT_ERR ="Product cannot be null";

@@ -3,11 +3,11 @@ package discount.strategy;
 import java.text.NumberFormat;
 
 /**
- * An implementation of the IDiscount interface. Used for getting a discounted
+ * An implementation of the DiscountStrategy interface. Used for getting a discounted
  * price on items sold as a lot.
  * @author Tracy Kobel
  */
-public class LotDiscount implements IDiscount {   
+public class LotDiscount implements DiscountStrategy {   
     private int qtyRequired;
     private double discountedPriceForLot;
     private String discountDescription;

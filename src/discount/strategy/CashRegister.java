@@ -7,18 +7,18 @@ package discount.strategy;
  */
 public class CashRegister {
     private Transaction currentTransaction;
-    private IDataAccess database; 
+    private DataAccessStrategy database; 
     private static final String DATA_ACCESS_ERR = "Data access connection is "
             + "null";
     private static final String FIELD_ERR = "Field cannot be null";
     private static final String QTY_ERR = "Quantity must be greater than 0";
    /**
-    * Custom constructor requires an IDataAccess implementation to access
+    * Custom constructor requires an DataAccessStrategy implementation to access
     * customer and product data.
     * @param database connection to customer and product database
     * @throws IllegalArgumentException when DataAccess is null
     */
-    public CashRegister (IDataAccess database) {
+    public CashRegister (DataAccessStrategy database) {
         if (database == null) {
             throw new IllegalArgumentException(DATA_ACCESS_ERR);
         }
@@ -57,7 +57,7 @@ public class CashRegister {
      * Generates a receipt of this transaction.
      */
     public void generateReceipt() {
-        IReceiptOutput receiptPrinter = new ConsoleReceiptOutput();
+        ReceiptOutputStrategy receiptPrinter = new ConsoleReceiptOutput();
         receiptPrinter.generateReceipt(currentTransaction);
     };
     /**

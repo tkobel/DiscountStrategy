@@ -5,7 +5,7 @@ package discount.strategy;
  * types of data formats.
  * @author Tracy Kobel
  */
-public interface IDataAccess {
+public interface DataAccessStrategy {
 
     /**
      * Gets a Customer object from an ID number.

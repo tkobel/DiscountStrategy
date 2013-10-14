@@ -1,4 +1,5 @@
 package discount.strategy;
+import exceptions.*;
 
 /**
  * An implementation of the DiscountStrategy interface. Used for a Buy One Get One Free
@@ -21,12 +22,12 @@ public class BOGODiscount implements DiscountStrategy {
      * @throws IllegalArgumentException if quantity or price is less than 0
      */
     @Override
-    public double getDiscountAmount(int qty, double price) {
+    public double getDiscountAmount(int qty, double price) throws NegativeParameterException{
         if ( qty < 0) {
-            throw new IllegalArgumentException(QTY_ERR);
+            throw new NegativeParameterException();
         }
         if (price <0) {
-            throw new IllegalArgumentException(PRICE_ERR);
+            throw new NegativeParameterException();
         }
         return (qty/FREE_ONE) * price;
     }

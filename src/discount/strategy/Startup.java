@@ -7,7 +7,10 @@ package discount.strategy;
  */
 public class Startup {
     public static void main(String[] args) {
-        CashRegister cashRegister1 = new CashRegister(new FakeDataAccess());
+        
+        CashRegister cashRegister1 = new CashRegister(DataAccessFactory
+                .getInstance()
+                .getDataAccessStrategy(DataAccessFactory.DataAccessStrategies.FAKE_DATA_ACCESS));
         
         cashRegister1.startTransaction("110");
         cashRegister1.scanProduct(10, "ERK-035");

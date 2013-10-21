@@ -21,7 +21,7 @@ public class LotDiscount implements DiscountStrategy {
      * @throws IllegalArgumentException if quantityRequired or 
      * discountedPriceForLot is less than 0
      */
-    public LotDiscount(int qtyRequired, double discountedPriceForLot) {
+    public LotDiscount(int qtyRequired, double discountedPriceForLot) throws IllegalArgumentException {
         if(qtyRequired < 0) {
             throw new IllegalArgumentException(AMOUNT_ERR);
         }
@@ -42,7 +42,7 @@ public class LotDiscount implements DiscountStrategy {
      * @throws IllegalArgumentException if qty or price is less than 0
      */
     @Override
-    public double getDiscountAmount(int qty, double price) {
+    public double getDiscountAmount(int qty, double price) throws IllegalArgumentException {
         if(qty < 0 || price < 0) {
             throw new IllegalArgumentException(AMOUNT_ERR);
         }

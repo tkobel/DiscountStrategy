@@ -99,7 +99,7 @@ public class Transaction {
      * @param item product to be added
      * @throws IllegalArgumentException if qty is less than 0 or item is null
      */
-    public void addLineItem(int qty, Product item) {
+    public void addLineItem(int qty, Product item) throws IllegalArgumentException {
         if (qty < 0) {
             throw new IllegalArgumentException(AMOUNT_ERR);
         }

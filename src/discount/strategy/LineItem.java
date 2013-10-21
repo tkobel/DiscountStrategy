@@ -18,7 +18,7 @@ public class LineItem {
      * @throws IllegalArgumentException if quantity is less than zero or product
      * object is null
      */
-    public LineItem(int qty, Product product) {
+    public LineItem(int qty, Product product) throws IllegalArgumentException {
         if(qty < 0) {
             throw new IllegalArgumentException(QTY_ERR);
         }

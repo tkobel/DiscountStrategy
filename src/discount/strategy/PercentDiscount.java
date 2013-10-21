@@ -22,7 +22,7 @@ public class PercentDiscount implements DiscountStrategy {
      * @throws IllegalArgumentException if discountPercentage is less than 0 or
      * greater than 1
      */
-    public PercentDiscount(double discountPercentage) {
+    public PercentDiscount(double discountPercentage) throws IllegalArgumentException{
         if(discountPercentage < 0 || discountPercentage > 1) {
             throw new IllegalArgumentException(PERCENTAGE_ERR);
         }
@@ -38,7 +38,7 @@ public class PercentDiscount implements DiscountStrategy {
      * @throws IllegalArgumentException if qty or price is less than 0
      */
     @Override
-    public double getDiscountAmount(int qty, double price) {
+    public double getDiscountAmount(int qty, double price) throws IllegalArgumentException {
         if(qty < 0 || price < 0) {
             throw new IllegalArgumentException(AMOUNT_ERR);
         }

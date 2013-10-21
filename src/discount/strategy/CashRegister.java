@@ -18,7 +18,7 @@ public class CashRegister {
     * @param database connection to customer and product database
     * @throws IllegalArgumentException when DataAccess is null
     */
-    public CashRegister (DataAccessStrategy database) {
+    public CashRegister (DataAccessStrategy database) throws IllegalArgumentException {
         if (database == null) {
             throw new IllegalArgumentException(DATA_ACCESS_ERR);
         }
@@ -29,7 +29,7 @@ public class CashRegister {
     * @param customerId customer ID number
     * @throws IllegalArgumentException when customerId is null.
     */
-    public void startTransaction(String customerId) {
+    public void startTransaction(String customerId) throws IllegalArgumentException {
         if (customerId == null) {
             throw new IllegalArgumentException(FIELD_ERR);
         }
@@ -43,7 +43,7 @@ public class CashRegister {
     * @throws IllegalArgumentException when qty is less than 0 or product ID is
     * null.
     */
-    public void scanProduct(int qty, String productId) {
+    public void scanProduct(int qty, String productId) throws IllegalArgumentException{
         if (qty < 0) {
             throw new IllegalArgumentException(QTY_ERR);
         }

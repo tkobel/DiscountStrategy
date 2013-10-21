@@ -15,7 +15,7 @@ public class Customer {
      * @param name -an alphanumeric value
      * @throws IllegalArgumentException if custId is null or == 0
      */
-    public final void setName(String name) {
+    public final void setName(String name) throws IllegalArgumentException{
         if(name ==  null|| name.length() == 0) {
             throw new IllegalArgumentException(NAME_ERR);
         }
@@ -42,7 +42,7 @@ public class Customer {
      * @param name customer name
      * @throws IllegalArgumentException if id is null or length is not 3
      */
-    public Customer(String id, String name) {
+    public Customer(String id, String name) throws IllegalArgumentException {
         if (id == null || id.length() != 3) {
             throw new IllegalArgumentException(ID_ERR);
         }

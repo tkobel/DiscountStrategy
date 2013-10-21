@@ -22,12 +22,12 @@ public class BOGODiscount implements DiscountStrategy {
      * @throws IllegalArgumentException if quantity or price is less than 0
      */
     @Override
-    public double getDiscountAmount(int qty, double price) throws NegativeParameterException{
+    public double getDiscountAmount(int qty, double price) throws IllegalArgumentException {
         if ( qty < 0) {
-            throw new NegativeParameterException();
+            throw new IllegalArgumentException();
         }
         if (price <0) {
-            throw new NegativeParameterException();
+            throw new IllegalArgumentException();
         }
         return (qty/FREE_ONE) * price;
     }

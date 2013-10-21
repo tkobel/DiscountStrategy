@@ -17,7 +17,7 @@ public class FakeDataAccess implements DataAccessStrategy {
      * @throws IllegalArgumentException if Customer ID number is null
      */
     @Override
-    public Customer getCustomerById(String id) {
+    public Customer getCustomerById(String id) throws IllegalArgumentException{
         if(id == null) {
             throw new IllegalArgumentException(NAME_ERR);
         }
@@ -36,7 +36,7 @@ public class FakeDataAccess implements DataAccessStrategy {
      * @throws IllegalArgumentException if the Product ID is null
      */
     @Override
-    public Product getProductById(String id) {
+    public Product getProductById(String id) throws IllegalArgumentException {
         if(id == null) {
             throw new IllegalArgumentException(PRODUCT_ERR);
         }

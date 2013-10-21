@@ -8,16 +8,18 @@ package discount.strategy;
 public class Startup {
     public static void main(String[] args) {
         
-        CashRegister cashRegister1 = new CashRegister(DataAccessFactory
-                .getInstance()
-                .getDataAccessStrategy(DataAccessFactory.DataAccessStrategies.FAKE_DATA_ACCESS));
+        DataAccessStrategy dataAccess = DataAccessFactory
+                                        .getInstance()
+                                        .getDataAccessStrategy(DataAccessFactory.DataAccessStrategies.FAKE_DATA_ACCESS);
         
-        cashRegister1.startTransaction("110");
-        cashRegister1.scanProduct(10, "ERK-035");
-        cashRegister1.scanProduct(1, "WEN-589");
-        cashRegister1.scanProduct(7, "AVN-803");
-        cashRegister1.scanProduct(1, "LDK-354");
-        cashRegister1.calculateTotal();
-        cashRegister1.generateReceipt();
+        CashRegister cr = new CashRegister(dataAccess);
+        
+        cr.startTransaction("110");  
+        cr.scanProduct(10, "ERK-035");
+        cr.scanProduct(1, "WEN-589");
+        cr.scanProduct(7, "AVN-803");
+        cr.scanProduct(1, "LDK-354");
+        cr.calculateTotal();
+        cr.generateReceipt();
     }
 }

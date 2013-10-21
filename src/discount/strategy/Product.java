@@ -25,7 +25,8 @@ public class Product {
      * is null, or if unitPrice is less than 0
      */
     
-    public Product(String id, String description, double unitPrice, DiscountStrategy productDiscount) {
+    public Product(String id, String description, double unitPrice, DiscountStrategy productDiscount) 
+            throws IllegalArgumentException {
         if(id == null) {
             throw new IllegalArgumentException(FIELD_ERR);
         }
